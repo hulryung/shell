@@ -7,7 +7,7 @@ set ignorecase
 set nobackup
 
 colorscheme desert
-set number
+"set number
 
 filetype on "vim file type on
 
@@ -16,13 +16,14 @@ filetype plugin indent on
 
 
 " set environment for vi, scope, ctags
-set tags=./tags
-set tags+=/home/cmax/vanilla-stable/tags
+set tags=./tags,/home/cmax/vanilla-stable/tags
+",./tags
+"set tags+=/home/cmax/vanilla-stable/tags
 
 " cscope
 cs add /home/cmax/vanilla-stable/cscope.out
-set cst
-set csto=0
+"set cst
+"set csto=0
 
 
 " source explorer
@@ -37,6 +38,8 @@ let g:SrcExpl_refreshTime = 500
 let g:SrcExpl_jumpKey = "<ENTER>"
 let g:SrcExpl_gobackKey = "<SPACE>"
 let g:SrcExpl_isUpdateTags = 0
+" debugging SrcExpl
+"let g:SrcExpl_isDebug = 1
 
 " taglist config
 nmap <F7> :TlistToggle<CR>

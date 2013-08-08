@@ -117,4 +117,12 @@ if [ -f ~/.prompt ]; then
     . ~/.prompt
 fi
 
+if [ -f ~/.banner ]; then
+    . ~/.banner
+fi
+
 set -o vi
+
+#LANG=C
+#export
+
