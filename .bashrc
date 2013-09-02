@@ -121,8 +121,10 @@ if [ -f ~/.banner ]; then
     . ~/.banner
 fi
 
+if [ -f ~/.lessforman ]; then
+    . ~/.lessforman
+fi
 set -o vi
 
 #LANG=C
 #export
-

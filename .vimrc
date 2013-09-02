@@ -16,7 +16,7 @@ filetype plugin indent on
 
 
 " set environment for vi, scope, ctags
-set tags=./tags,/home/cmax/vanilla-stable/tags
+set tags=./tags,./ctags,tags;$HOME
 ",./tags
 "set tags+=/home/cmax/vanilla-stable/tags
 
