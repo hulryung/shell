@@ -124,6 +124,11 @@ fi
 if [ -f ~/.lessforman ]; then
     . ~/.lessforman
 fi
+
+# development environment
+if [ -f ~/.devenv ]; then
+    . ~/.devenv
+fi
 set -o vi
 
 #LANG=C
