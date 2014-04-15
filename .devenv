@@ -1,9 +1,10 @@
-export ARCH=powerpc
-export CROSS_COMPILE=/home/cmax/buildroot/output/host/usr/bin/powerpc-linux-
-export SDK_ROOT=/home/cmax/913x_WUSDK_REL_1.4/src/
-export KERNEL_DIR=$SDK_ROOT/linux-2.6
-export KERNEL_PATH=$KERNEL_DIR
-export IPC_DIR=$SDK_ROOT/ipc
+#export ARCH=powerpc
+#export CROSS_COMPILE=/home/cmax/buildroot/output/host/usr/bin/powerpc-linux-
+#export SDK_ROOT=/home/cmax/913x_WUSDK_REL_1.4/src/
+#export KERNEL_DIR=$SDK_ROOT/linux-2.6
+#export KERNEL_PATH=$KERNEL_DIR
+#export IPC_DIR=$SDK_ROOT/ipc
 #export KLIB=$(KERNEL_DIR)
 #export KLIB_BUILD=$(KERNEL_DIR)
-export PATH=$PATH:/home/cmax/buildroot/output/host/usr/bin/
+export PATH=$PATH:/usr/lib/jvm/bin:/usr/lib/jvm/jre/bin:~/bin:~/arm-2010q1/bin:~/arc2.3-p0/elf32-4.2.1/bin
+export USE_CCACHE=1
