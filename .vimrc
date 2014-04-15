@@ -24,7 +24,11 @@ set tags=./tags,./ctags,ctags;$HOME,tags;$HOME
 cs add /home/cmax/vanilla-stable/cscope.out
 "set cst
 "set csto=0
-
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " source explorer
 nmap <F8> :SrcExplToggle<CR>
