@@ -34,7 +34,7 @@ TTY=$(tty); TTY=${TTY#/dev/}
 shopt -s checkwinsize
 PROMPT_UPDATE() {
     case "$PWD" in
-        $HOME*) PWD_SHORT="${PWD/$HOME/~}" ;;
+        $HOME*) PWD_SHORT="${PWD/$HOME/'~'}" ;;
         *)      PWD_SHORT="$PWD" ;;
     esac
     PS1="($LOGNAME@$TTY@$HOSTNAME_SHORT)-($PROMPT_DATE)$WEATHER_INFO-($PWD_SHORT)n"
