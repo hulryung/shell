@@ -5,3 +5,9 @@ http://github.com/hulryung/shell
 
 # devenv
 environment settings for developer
+
+Install
+ git clone http://github.com/hulryung/shell.git
+ cd shell
+ sh install.sh
+ 
