@@ -1,7 +1,6 @@
-[user]
-	email = hulryung@gmail.com
-	name = Daekeun Kang
 [credential]
 	helper = cache
 [color]
 	ui = auto
+[core]
+	editor = vi
