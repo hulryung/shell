@@ -22,7 +22,7 @@ LIGHT_MAGENTA="[1;35m"
      NO_COLOR="[0m"
 
 HOSTNAME_SHORT=${HOSTNAME%%.*}
-TTY=$(tty); TTY=${TTY#/dev/}
+#TTY=$(tty); TTY=${TTY#/dev/}
 
 
 
@@ -37,7 +37,7 @@ PROMPT_UPDATE() {
         $HOME*) PWD_SHORT="${PWD/$HOME/'~'}" ;;
         *)      PWD_SHORT="$PWD" ;;
     esac
-    PS1="($LOGNAME@$TTY@$HOSTNAME_SHORT)-($PROMPT_DATE)$WEATHER_INFO-($PWD_SHORT)n"
+    PS1="($LOGNAME@$HOSTNAME_SHORT $PROMPT_DATE) $(parse_git_branch)($PWD_SHORT)"
     if [ ! -n "$COLUMNS" ]; then
         local fillsize=0
     else
@@ -55,13 +55,19 @@ PROMPT_UPDATE() {
         local PWD_SHORT="$prefix..${PWD_SHORT:$((2+${#prefix}-${fillsize}))}"
     fi
     PS1="\
-$GRAY($RED$LOGNAME$GRAY@$GREEN$TTY$GRAY@$LIGHT_BLUE$HOSTNAME_SHORT$GRAY)-\
-($PROMPT_DATEFMT$GRAY)$WEATHER_INFOFMT-\
-$fill($YELLOW$PWD_SHORT$GRAY)$NO_COLOR\r\n\
+$GRAY($RED$LOGNAME$GRAY@$LIGHT_BLUE$HOSTNAME_SHORT \
+$PROMPT_DATEFMT$GRAY)\
+$RED$(parse_git_branch)\
+$GRAY$fill($YELLOW$PWD_SHORT$GRAY)$NO_COLOR\r\n\
 (\j:\#:\$?)\\$ "
 #$GRAY($RED\j$GRAY:$GREEN\#$GRAY:$BLUE\$?$GRAY)\\$ $NO_COLOR"
 }
 
+parse_git_branch() {
+	if [ -a /usr/bin/git ] || [ -a /usr/local/git ]; then
+		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	fi
+}
 
 ## set PROMPT_COMMAND
 PROMPT_COMMAND=PROMPT_UPDATE
@@ -83,13 +89,5 @@ case $TERM in
     ;;
 esac
 
-
-# set PROMPT_DATE if not set
-# from 2.05b, bash supports custom date formats with \D{...}
-if [ ${BASH_VERSINFO[0]} -ge 2 -a ! "${BASH_VERSINFO[1]}" \< "05b" ]; then
-    PROMPT_DATE=${PROMPT_DATE:-"`date '+%Y-%m-%d %a %T'`"}
-    PROMPT_DATEFMT=${PROMPT_DATEFMT:-"\D{$CYAN%Y-%m-%d $MAGENTA%a} $NO_COLOR\t"}
-else
-    PROMPT_DATE=${PROMPT_DATE:-"DDD mmm dd HH:MM:SS"}
-    PROMPT_DATEFMT=${PROMPT_DATEFMT:-"$CYAN\d $MAGENTA\t"}
-fi
+PROMPT_DATE=${PROMPT_DATE:-"`date '+%Y-%m-%d %T'`"}
+PROMPT_DATEFMT=${PROMPT_DATEFMT:-"\D{$CYAN%Y-%m-%d} $NO_COLOR\t"}
