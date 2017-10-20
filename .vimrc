@@ -6,7 +6,7 @@ set hlsearch
 set ignorecase
 set nobackup
 
-colorscheme desert
+colorscheme peachpuff
 "set number
 
 filetype on "vim file type on
