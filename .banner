@@ -1,6 +1,6 @@
 #toilet -f smmono12 CMAX Wireless
 if [ -x /usr/bin/figlet -a -x /usr/bin/toilet ]; then
-	figlet -ctf slant HULRYUNG!!
+	figlet -ctf slant $HOSTNAME
 else
 	echo -e "please install figlet and toilet"
 	echo -e "sudo apt-get install figlet toilet"
